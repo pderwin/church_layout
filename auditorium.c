@@ -42,6 +42,9 @@ void auditorium_render (auditorium_t *ap)
    char
       str[80];
    uint32_t
+      center,
+      left,
+      right,
       row_x,
       row_y;
    row_t
@@ -64,17 +67,23 @@ void auditorium_render (auditorium_t *ap)
       /*
        * Draw a box representing the section
        */
-//      box(sp->anchor_x, sp->anchor_y, 100, sp->width);
+//      box(sp->anchor_x, sp->anchor_y, 150, sp->width);
+//      line(sp->anchor_x + (sp->width / 2), sp->anchor_y, sp->anchor_x + (sp->width/2), sp->anchor_y+ 100);
 
       /*
        * Put out section name and chair count
        */
       sprintf(str, "%s (%d)", sp->name, sp->chairs);
 
-      text_at(sp->anchor_x, sp->anchor_y + 5, str);
+      text_center(sp->anchor_x + (sp->width / 2), sp->anchor_y + 5, str);
 
       newpath();
       font("Helvetica-Bold", 8);
+
+
+      left   = sp->anchor_x;
+      center = sp->anchor_x + (sp->width / 2 ) ;
+      right  = sp->anchor_x + sp->width;
 
       /*
        * Draw each row
@@ -93,9 +102,9 @@ void auditorium_render (auditorium_t *ap)
 
 		if (rp->count1) {
 		   sprintf(str, "%2d", rp->count1);
-		   text_at(sp->anchor_x, row_y, str);
+		   text_at(left, row_y, str);
 
-		   row_render(sp->anchor_x+12, row_y, rp->count1);
+		   row_render(left + 12, row_y, rp->count1);
 		}
 
 		if (rp->count2) {
@@ -107,6 +116,51 @@ void auditorium_render (auditorium_t *ap)
 
 		   row_render(row_x + 12, row_y, rp->count2);
 		}
+		break;
+
+
+
+	     case JUSTIFY_CENTER:
+
+		if (rp->count1) {
+		   sprintf(str, "%2d", rp->count1);
+		   text_at(center - 15, row_y, str);
+
+		   row_render_backwards(center - 15, row_y, rp->count1);
+		}
+
+		if (rp->count2) {
+
+		   sprintf(str, "%2d", rp->count2);
+		   text_at(center+5, row_y, str);
+
+		   row_render(center + 15, row_y, rp->count2);
+		}
+		break;
+
+
+
+	     case JUSTIFY_RIGHT:
+
+		if (rp->count1) {
+		   sprintf(str, "%2d", rp->count1);
+		   text_at(center - 15, row_y, str);
+
+		   row_render_backwards(center - 15, row_y, rp->count1);
+		}
+
+		if (rp->count2) {
+
+		   sprintf(str, "%2d", rp->count2);
+		   text_at(right - 5, row_y, str);
+
+		   row_render_backwards(right - 10, row_y, rp->count2);
+		}
+		break;
+
+
+
+
 	     default:
 	 }
 //	 row_render(rp, sp->anchor_x, row_y);

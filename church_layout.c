@@ -16,6 +16,16 @@ int
    auditorium_t
       *ap = auditorium_create();;
 
+#define MIDDLE (450)
+
+   gsave();
+   font("Helvetica-Bold", 18);
+   rotate(90);
+   setlinewidth(1);
+   text_center(MIDDLE, -30, "Southland Christian Church");
+   text_center(MIDDLE, -50, "Richmond Road Campus");
+   grestore();
+
    font("Helvetica-Bold", 14);
 
    setlinewidth(1);

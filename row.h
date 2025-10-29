@@ -14,4 +14,5 @@ struct row_s {
        *next;
 };
 
-void row_render (uint32_t x, uint32_t y, uint32_t count );
+void row_render           (uint32_t x, uint32_t y, uint32_t count );
+void row_render_backwards (uint32_t x, uint32_t y, uint32_t count );

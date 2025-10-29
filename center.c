@@ -4,7 +4,7 @@
 #include "section.h"
 
 #define CENTER_x       350
-#define CENTER_FRONT_y 30
+#define CENTER_FRONT_y 60
 #define CENTER_REAR_y  (CENTER_FRONT_y + 200)
 #define CENTER_ROTATE  0
 #define CENTER_WIDTH   DEFAULT_WIDTH
@@ -37,7 +37,17 @@ section_t *center_section_front_create( void *ap )
 }
 
 
-
+/*-------------------------------------------------------------------------
+ *
+ * name:        center_section_rear_create
+ *
+ * description:
+ *
+ * input:
+ *
+ * output:
+ *
+ *-------------------------------------------------------------------------*/
 section_t *center_section_rear_create( void *ap )
 {
    section_t

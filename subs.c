@@ -89,6 +89,27 @@ void text_at (uint32_t x, uint32_t y, char *str)
    printf("(%s) show\n", str);
 }
 
+void text_center (uint32_t x, uint32_t y, char *str)
+{
+   /*
+    * Put X / Y location on stack
+    */
+   printf("%d ", x);
+
+   /*
+    * Put string on stack and get its length
+    */
+   printf("(%s) stringwidth pop\n", str);
+
+   /*
+    * Divide length by 2 and then subtract from Y
+    */
+   printf("2 div ");
+   printf("sub ");
+   printf("%d moveto\n", y);
+   printf("(%s) show\n", str);
+}
+
 
 void translate (uint32_t x, uint32_t y)
 {

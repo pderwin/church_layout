@@ -18,4 +18,5 @@ void setlinewidth (uint32_t w);
 void showpage     (void);
 void stroke       (void);
 void text_at      (uint32_t x, uint32_t y, char *str);
+void text_center  (uint32_t x, uint32_t y, char *str);
 void translate    (uint32_t x, uint32_t y);

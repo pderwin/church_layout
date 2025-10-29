@@ -23,12 +23,12 @@ section_t *left_section_front_create(void *ap)
 		       LEFT_WIDTH,
 		       JUSTIFY_RIGHT);
 
-   section_add_row(sp, 9);
-   section_add_row(sp, 12);
-   section_add_row(sp, 13);
-   section_add_row(sp, 15);
-   section_add_row(sp, 16);
-   section_add_row(sp, 18);
+   section_add_row_split(sp,  0,  9);
+   section_add_row_split(sp,  0, 12);
+   section_add_row_split(sp,  0, 13);
+   section_add_row_split(sp,  0, 15);
+   section_add_row_split(sp,  0, 16);
+   section_add_row_split(sp,  0, 18);
    section_add_row_split(sp,  9,  8);
    section_add_row_split(sp, 10,  9);
    section_add_row_split(sp, 11, 10);

@@ -1,4 +1,4 @@
-clear
+# clear
 
 if [ ! -d build ] ; then
     cmake -S . -B build -DCMAKE_BUILD_TYPE=DEBUG

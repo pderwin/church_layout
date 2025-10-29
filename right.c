@@ -4,7 +4,7 @@
 #include "section.h"
 #include "subs.h"
 
-#define RIGHT_x        550
+#define RIGHT_x        600
 #define RIGHT_FRONT_y  150
 #define RIGHT_REAR_y   (RIGHT_FRONT_y + 200)
 #define RIGHT_ROTATE   -10
