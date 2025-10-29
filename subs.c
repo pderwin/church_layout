@@ -49,6 +49,11 @@ void move_to (uint32_t x, uint32_t y)
    printf("%d %d moveto\n", x, y);
 }
 
+void newpath (void)
+{
+   printf("newpath ");
+}
+
 void pagesize(uint32_t w, uint32_t h)
 {
    printf("<< /PageSize [%d %d] >> setpagedevice\n", w, h);

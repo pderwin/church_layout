@@ -49,7 +49,13 @@ row_t *section_add_row_split(section_t *sp, uint32_t count1, uint32_t count2)
    return rp;
 }
 
-section_t *section_create (void *ap, char *name, int32_t rotate, uint32_t anchor_x, uint32_t anchor_y)
+section_t *section_create (void      *ap,
+			   char      *name,
+			   int32_t   rotate,
+			   uint32_t  anchor_x,
+			   uint32_t  anchor_y,
+			   uint32_t  width,
+			   justify_e justify)
 {
    section_t
       *sp;
@@ -66,7 +72,9 @@ section_t *section_create (void *ap, char *name, int32_t rotate, uint32_t anchor
    sp->name     = strdup(name);
    sp->anchor_x = anchor_x;
    sp->anchor_y = anchor_y;
+   sp->width    = width;
    sp->rotate   = rotate + 90;
+   sp->justify  = justify;
 
    return sp;
 }

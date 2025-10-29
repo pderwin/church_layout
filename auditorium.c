@@ -39,14 +39,17 @@ auditorium_t *auditorium_create (void)
 
 void auditorium_render (auditorium_t *ap)
 {
+   char
+      str[80];
    uint32_t
+      row_x,
       row_y;
    row_t
       *rp;
    section_t
       *sp;
 
-   pagesize(612, 1008);
+//   pagesize(612, 1008);
    translate(590,0);
 
 
@@ -61,12 +64,17 @@ void auditorium_render (auditorium_t *ap)
       /*
        * Draw a box representing the section
        */
-      box(sp->anchor_x, sp->anchor_y, 100, 10);
+//      box(sp->anchor_x, sp->anchor_y, 100, sp->width);
 
       /*
-       * Put out section name
+       * Put out section name and chair count
        */
-      text_at(sp->anchor_x, sp->anchor_y, sp->name);
+      sprintf(str, "%s (%d)", sp->name, sp->chairs);
+
+      text_at(sp->anchor_x, sp->anchor_y + 5, str);
+
+      newpath();
+      font("Helvetica-Bold", 8);
 
       /*
        * Draw each row
@@ -76,11 +84,32 @@ void auditorium_render (auditorium_t *ap)
       /*
        * Increment Y to avoid overwrite of section name
        */
-      row_y += 20;
+      row_y += 25;
 
       for (rp = sp->first_row; rp; rp = rp->next) {
 
-	 row_render(rp, sp->anchor_x, row_y);
+	 switch (sp->justify) {
+	     case JUSTIFY_LEFT:
+
+		if (rp->count1) {
+		   sprintf(str, "%2d", rp->count1);
+		   text_at(sp->anchor_x, row_y, str);
+
+		   row_render(sp->anchor_x+12, row_y, rp->count1);
+		}
+
+		if (rp->count2) {
+
+		   row_x = sp->anchor_x + (sp->width / 2);
+
+		   sprintf(str, "%2d", rp->count2);
+		   text_at(row_x, row_y, str);
+
+		   row_render(row_x + 12, row_y, rp->count2);
+		}
+	     default:
+	 }
+//	 row_render(rp, sp->anchor_x, row_y);
 
 	 row_y += 10;
       }

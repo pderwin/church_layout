@@ -1,19 +1,27 @@
 #include <stdio.h>
+#include "church_layout.h"
 #include "right.h"
 #include "section.h"
 #include "subs.h"
 
-#define RIGHT_x        700
+#define RIGHT_x        550
 #define RIGHT_FRONT_y  150
 #define RIGHT_REAR_y   (RIGHT_FRONT_y + 200)
 #define RIGHT_ROTATE   -10
+#define RIGHT_WIDTH    DEFAULT_WIDTH
 
 section_t *right_section_front_create( auditorium_t *ap )
 {
    section_t
       *sp;
 
-   sp = section_create(ap, "right-front", RIGHT_ROTATE, RIGHT_x, RIGHT_FRONT_y);
+   sp = section_create(ap,
+		       "right-front",
+		       RIGHT_ROTATE,
+		       RIGHT_x,
+		       RIGHT_FRONT_y,
+		       RIGHT_WIDTH,
+		       JUSTIFY_LEFT);
 
    section_add_row(sp, 9);
    section_add_row(sp, 11);
@@ -40,7 +48,13 @@ void right_section_rear_create( auditorium_t *ap )
    section_t
       *sp;
 
-   sp = section_create(ap, "right-rear", RIGHT_ROTATE, RIGHT_x, RIGHT_REAR_y);
+   sp = section_create(ap,
+		       "right-rear",
+		       RIGHT_ROTATE,
+		       RIGHT_x,
+		       RIGHT_REAR_y,
+		       RIGHT_WIDTH,
+		       JUSTIFY_LEFT);
 
    section_add_row_split(sp, 13, 14);
    section_add_row_split(sp, 13, 14);

@@ -1,18 +1,20 @@
 #include <stdio.h>
+#include "church_layout.h"
 #include "center.h"
 #include "section.h"
 
-#define CENTER_x       400
+#define CENTER_x       350
 #define CENTER_FRONT_y 30
 #define CENTER_REAR_y  (CENTER_FRONT_y + 200)
 #define CENTER_ROTATE  0
+#define CENTER_WIDTH   DEFAULT_WIDTH
 
 section_t *center_section_front_create( void *ap )
 {
    section_t
       *sp;
 
-   sp = section_create( ap, "center-front", CENTER_ROTATE, CENTER_x, CENTER_FRONT_y);
+   sp = section_create( ap, "center-front", CENTER_ROTATE, CENTER_x, CENTER_FRONT_y, CENTER_WIDTH, JUSTIFY_CENTER);
 
    section_add_row_split(sp, 8,   8);
    section_add_row_split(sp, 8,   8);
@@ -41,7 +43,13 @@ section_t *center_section_rear_create( void *ap )
    section_t
       *sp;
 
-   sp = section_create(ap, "center-rear", CENTER_ROTATE, CENTER_x, CENTER_REAR_y);
+   sp = section_create(ap,
+		       "center-rear",
+		       CENTER_ROTATE,
+		       CENTER_x,
+		       CENTER_REAR_y,
+		       CENTER_WIDTH,
+		       JUSTIFY_CENTER);
 
    section_add_row_split(sp, 13, 13);
    section_add_row_split(sp, 14, 13);

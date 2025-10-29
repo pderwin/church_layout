@@ -10,6 +10,7 @@ void gsave        (void);
 void line         (uint32_t x0, uint32_t y0, uint32_t x1, uint32_t y1);
 void line_to      (uint32_t x, uint32_t y);
 void move_to      (uint32_t x, uint32_t y);
+void newpath      (void);
 void pagesize     (uint32_t w, uint32_t h);
 void rotate       (uint32_t degrees);
 void scale        (uint32_t x, uint32_t y);

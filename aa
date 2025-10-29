@@ -1,0 +1,16 @@
+clear
+
+if [ ! -d build ] ; then
+    cmake -S . -B build -DCMAKE_BUILD_TYPE=DEBUG
+fi
+
+cmake --build build --parallel 2
+rc=$?
+
+if [ $rc -ne 0 ] ; then
+    echo "Error building program"
+    exit 1;
+fi
+
+make
+date
