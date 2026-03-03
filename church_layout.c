@@ -10,21 +10,14 @@
 int
     main(int argc, char *argv[])
 {
-   (void) argc;
-   (void) argv;
-
    auditorium_t
       *ap = auditorium_create();;
 
+   (void) argc;
+   (void) argv;
+
 #define MIDDLE (450)
 
-   gsave();
-   font("Helvetica-Bold", 18);
-   rotate(90);
-   setlinewidth(1);
-   text_center(MIDDLE, -30, "Southland Christian Church");
-   text_center(MIDDLE, -50, "Richmond Road Campus");
-   grestore();
 
    font("Helvetica-Bold", 14);
 
@@ -39,6 +32,25 @@ int
     */
    auditorium_render( ap );
 
-   fprintf(stderr, "Auditorium chairs: %d \n", auditorium_chairs(ap) );
+   {
+      char
+	 str[80];
+
+      gsave();
+
+      font("Helvetica-Bold", 18);
+      rotate(90);
+      setlinewidth(1);
+
+      text_center(MIDDLE, 560, "Southland Christian Church");
+      text_center(MIDDLE, 540, "Richmond Road Campus");
+
+      sprintf(str, "Auditorium chairs: %d", auditorium_chairs(ap) );
+      text_center(MIDDLE, 520, str);
+
+      grestore();
+   }
+
+   showpage();
 
 }

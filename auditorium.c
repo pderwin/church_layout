@@ -170,8 +170,6 @@ void auditorium_render (auditorium_t *ap)
 
       grestore();
    }
-
-   showpage();
 }
 
 
